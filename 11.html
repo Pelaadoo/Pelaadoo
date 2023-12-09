@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Productos</title>
+  <link rel="stylesheet" href="11.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Nuestros Productos</h1>
+    <div class="products">
+      <div class="product">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_917757-MLU72637260915_112023-O.webp" alt="Producto 1">
+        <h2>Peluche Almohada</h2>
+
+        <ol>
+<li>  Altura x Ancho: 13 cm x 46 cm</li>
+<li> Peso: 330 g</li>
+<li>Material del relleno: Bellón siliconado,Materiales,Peluche soft, Suave al tacto</li>
+<li> Es material hipoalergénico: no</li>
+<li>Con luces: no</li>
+<li>Con movimiento: no</li>
+<li>con sonido: no</li>
+
+        </ol>
+
+        <p class="price">Precio: $3500</p>
+        <button class="buy-button">Comprar</button>
+          <button class="delete-btn" data-product-id="1">Eliminar</button>
+      </div>
+
+       <div class="product">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_993915-MLU72565809118_112023-O.webp" alt="Producto 2">
+        <h2>Peluche Zorro Acostado</h2>
+
+        <ol>
+      <li>  Altura x Ancho: 13 cm x 46 cm</li>
+      <li> Peso: 330 g</li>
+      <li>Material del relleno: Bellón siliconado,Materiales,Peluche soft, Suave al tacto</li>
+      <li> Es material hipoalergénico: no</li>
+      <li>Con luces: no</li>
+      <li>Con movimiento: no</li>
+      <li>con sonido: no</li>
+       </ol>
+
+        <p class="price">Precio: $3500</p>
+        <button class="buy-button">Comprar</button>
+        <button class="delete-btn" data-product-id="1">Eliminar</button>
+      </div>
+      <div class="product">
+       <img src="https://http2.mlstatic.com/D_NQ_NP_723332-MLA49796459464_042022-O.webp" alt="Producto 2">
+       <h2>Peluche Almohadón Oso set de 3</h2>
+
+       <ol>
+     <li>  Altura x Ancho: 13 cm x 46 cm</li>
+     <li> Peso: 330 g</li>
+     <li>Material del relleno: Bellón siliconado,Materiales,Peluche soft, Suave al tacto</li>
+     <li> Es material hipoalergénico: no</li>
+     <li>Con luces: no</li>
+     <li>Con movimiento: no</li>
+     <li>con sonido: no</li>
+      </ol>
+
+       <p class="price">Precio: $10.500</p>
+       <button class="buy-button">Comprar</button>
+       <button class="delete-btn" data-product-id="1">Eliminar</button>
+     </div>
+
+      <!-- Agrega más productos según sea necesario -->
+    </div>
+  </div>
+  <script src="10.js"></script>
+  <script>
+      // Agregar un evento click a cada botón de eliminar
+      document.querySelectorAll('.delete-btn').forEach(button => {
+          button.addEventListener('click', function() {
+              const productId = this.dataset.productId;
+              const confirmation = confirm(`¿Estás seguro de que quieres eliminar el producto ${productId}?`);
+
+              if (confirmation) {
+
+                  this.parentNode.remove(); // Elimina el elemento padre (el div que contiene el producto)
+              }
+          });
+      });
+  </script>
+<div class="pelado" style="text-align:center">
+  <div class="container">
+      <h2 style="color:#0EEFC3">Alta de Producto</h2>
+      <form>
+          <div class="form-group">
+              <label style="color:#0EEFC3" for="nombre">Nombre del Producto:</label>
+              <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre del producto">
+          </div>
+          <div class="form-group">
+              <label style="color:#0EEFC3"for="descripcion">Descripcion:</label>
+              <textarea class="form-control" id="descripcion" rows="3" placeholder="Ingrese una descripcion"></textarea>
+          </div>
+          <div class="form-group">
+              <label style="color:#0EEFC3"for="precio">Precio:</label>
+              <input type="number" class="form-control" id="precio" placeholder="Ingrese el precio del producto">
+          </div>
+          <button style="color:#0EEFC3"type="submit" class="btn btn-primary">Guardar Producto</button>
+      </form>
+  </div>
+
+  <div class="container">
+      <h2 style="color:#0EEFC3">Editar Producto</h2>
+      <form>
+          <div class="form-group">
+              <label style="color:#0EEFC3"for="nombre">Nombre del Producto:</label>
+              <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre del producto">
+          </div>
+          <div class="form-group">
+              <label style="color:#0EEFC3" for="descripcion">descripcion:</label>
+              <textarea class="form-control" id="descripcion" rows="3" placeholder="Ingrese una Descripcion"></textarea>
+          </div>
+          <div class="form-group">
+              <label style="color:#0EEFC3"for="precio">Precio:</label>
+              <input type="number" class="form-control" id="precio" placeholder="Ingrese el precio del producto">
+          </div>
+          <button style="color:#0EEFC3" type="submit" class="btn btn-primary">Actualizar Producto</button>
+      </form>
+  </div>
+</div>
+
+
+<div style="text-align:center">
+  <script>
+      function calcularPrecio() {
+          var precioUnitario = parseFloat(document.getElementById('precioUnitario').value);
+          var cantidad = parseInt(document.getElementById('cantidad').value);
+          var descuentoPorcentaje = parseFloat(document.getElementById('descuento').value);
+
+          var precioTotal = precioUnitario * cantidad;
+          var descuento = precioTotal * (descuentoPorcentaje / 100);
+          var precioConDescuento = precioTotal - descuento;
+
+          document.getElementById('precioTotal').innerHTML = "$" + precioConDescuento.toFixed(2);
+      }
+
+
+
+  </script>
+
+
+<div class="border">
+
+
+  <form>
+
+
+      <label for="precioUnitario">Precio Unitario:</label>
+
+
+      <input type="number" id="precioUnitario" placeholder="Ingrese el precio unitario" step="0.01"><br><br>
+
+
+      <label for="cantidad">Cantidad:</label>
+
+
+      <input type="number" id="cantidad" placeholder="Ingrese la cantidad"><br><br>
+
+
+      <label for="descuento">Descuento (%):</label>
+
+
+      <input type="number" id="descuento" placeholder="Ingrese el porcentaje de descuento"><br><br>
+
+
+      <button type="button" onclick="calcularPrecio()">Calcular Precio</button>
+
+
+  </form>
+
+
+
+  <p>Precio Total con Descuento: <span id="precioTotal">$0.00</span></p>
+
+
+</form>
+
+
+<div/>
+
+
+
+<form id="formulario" onsubmit="return validarFormulario()">
+ <input type="text" id="nombre" placeholder="Nombre" required>
+ <input type="email" id="email" placeholder="Correo electrónico" required>
+ <button type="submit">Enviar</button>
+</form>
+
+<script>
+ function validarFormulario() {
+   // Validación de campos
+   let nombre = document.getElementById('nombre').value;
+   let email = document.getElementById('email').value;
+
+   if (nombre === 'pelado' || email === 'pelado') {
+     alert('Por favor, complete todos los campos.');
+     return false; // Evita que se envíe el formulario si hay campos vacíos
+   }
+
+   // Otras validaciones como formato de email, etc.
+
+   return true; // Envía el formulario si pasa la validación
+ }
+</script>
+
+
+<div id="carrito">
+<h2>Carrito de Compras</h2>
+<ul id="lista-carrito">
+<!-- Elementos del carrito se agregan dinámicamente aquí -->
+</ul>
+<p>Total: <span id="total">0</span> USD</p>
+</div>
+
+<script>
+let total = 0;
+
+function agregarAlCarrito(nombre, precio) {
+const listaCarrito = document.getElementById('lista-carrito');
+const elemento = document.createElement('li');
+elemento.textContent = `${nombre} - ${precio} PESOS`;
+listaCarrito.appendChild(elemento);
+
+total += precio;
+document.getElementById('total').textContent = total;
+}
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
